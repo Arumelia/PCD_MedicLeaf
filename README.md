@@ -1,69 +1,57 @@
+# 🌿 Medic Leaf - Klasifikasi Daun Tanaman Obat
 
-# MedicLeaf - Aplikasi Klasifikasi Daun Tanaman Obat
+**Medic Leaf** adalah aplikasi desktop berbasis Python yang memungkinkan pengguna untuk mengklasifikasikan jenis daun tanaman obat menggunakan model deep learning. Aplikasi ini dirancang dengan antarmuka pengguna yang sederhana dan modern menggunakan `Tkinter`.
 
-MedicLeaf adalah aplikasi berbasis Streamlit untuk mengklasifikasikan jenis tanaman obat dari gambar daun menggunakan model CNN (MobileNetV2).
+## 🚀 Fitur
 
-## Struktur Proyek
+- 🔍 Klasifikasi otomatis daun menjadi salah satu dari:
+  - Kumis Kucing
+  - Pegagan
+  - Sirih
+- 📷 Deteksi daun otomatis dari gambar atau kamera
+- 🖼️ Bounding box pada area daun yang terdeteksi
+- 🧠 Model deep learning ringan berbasis Keras
+- 🖥️ Antarmuka GUI sederhana dan responsif
+
+## 🗂️ Struktur Proyek
 
 ```
-MedicLeaf/
-├── dataset/                # Folder berisi subfolder gambar tiap kelas daun
-│   ├── kumis_kucing/
-│   ├── pegagan/
-│   └── sirih/
-├── app.py                 # Aplikasi utama Streamlit
-├── train_model.py         # Skrip untuk melatih model
-├── generate_labels.py     # Skrip untuk menghasilkan labels.txt dari dataset
-├── labels.txt             # Daftar nama kelas yang diambil dari folder dataset
-├── model.pth              # Model hasil training
-├── requirements.txt       # Daftar dependensi Python
-└── all_launch.py          # Jalankan pipeline otomatis: label → training → app
+├── main.py             # Aplikasi utama
+├── keras_model.h5      # Model Keras hasil training
+├── labels.txt          # Daftar label klasifikasi
+├── requirements.txt    # Daftar dependensi
+└── README.md           # Dokumentasi ini
 ```
 
-## Langkah Penggunaan
+## 🛠️ Instalasi
 
-1. **Siapkan Dataset**
-   - Tempatkan gambar-gambar daun ke dalam subfolder sesuai jenisnya di dalam folder `dataset/`.
+1. Pastikan Python 3.8 atau lebih baru telah terpasang.
+2. Install semua dependensi dengan perintah:
 
-2. **Generate Label**
-   Jalankan file berikut untuk menghasilkan `labels.txt`:
-   ```bash
-   python generate_labels.py
-   ```
-
-3. **Training Model**
-   Latih model MobileNetV2 menggunakan:
-   ```bash
-   python train_model.py
-   ```
-   Hasil model akan disimpan sebagai `model.pth`.
-
-4. **Jalankan Aplikasi**
-   Jalankan aplikasi Streamlit:
-   ```bash
-   streamlit run app.py
-   ```
-
-5. **Atau Jalankan Semua Sekaligus**
-   Jalankan:
-   ```bash
-   streamlit run all_launch.py
-   ```
-   untuk secara otomatis generate label → training model → membuka aplikasi.
-
-## Catatan Penting
-
-- File `labels.txt` akan disusun otomatis dari folder dalam `dataset/`.
-- Jika ada folder yang kosong atau hanya berisi file rusak, label tersebut tidak akan dimasukkan.
-- Pastikan nama folder tidak mengandung spasi atau huruf besar untuk konsistensi.
-
-## Dependencies
-
-Instal semua dependensi dengan:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Lisensi
+3. Jalankan aplikasi:
 
-Proyek ini untuk keperluan edukasi dan non-komersial.
+```bash
+python main.py
+```
+
+## 📦 Dependensi
+
+Semua dependensi tercantum di `requirements.txt`, yaitu:
+
+- `tensorflow==2.13.0` atau `tensorflow-cpu==2.13.0` (untuk sistem tanpa GPU)
+- `opencv-python`
+- `numpy`
+- `Pillow`
+
+## 💡 Catatan
+
+- Pastikan webcam terhubung jika ingin menggunakan fitur kamera.
+- Gunakan gambar dengan kualitas cukup agar deteksi optimal.
+
+## 📜 Lisensi
+
+Aplikasi ini dapat digunakan bebas untuk keperluan edukasi dan riset.
